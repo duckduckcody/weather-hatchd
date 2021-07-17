@@ -18,13 +18,11 @@ export const Icon = styled.img`
 
 export const CurrentTemp = styled.div`
   font-size: 32px;
-  text-align: center;
   font-weight: bold;
 `;
 
 export const Degrees = styled.span`
   font-size: 0.5em;
-  line-height: 0.5em;
 `;
 
 export const DetailedInfoContainer = styled.div`
@@ -35,33 +33,30 @@ export const DetailedInfoContainer = styled.div`
     'feelsLike min max'
     'wind humidity cloudCover';
   grid-gap: 8px;
-`;
-
-const DetailedInfo = styled.span`
   text-align: center;
 `;
 
-export const FeelsLike = styled(DetailedInfo)`
+export const FeelsLike = styled.span`
   grid-area: feelsLike;
 `;
 
-export const Max = styled(DetailedInfo)`
+export const Max = styled.span`
   grid-area: max;
 `;
 
-export const Min = styled(DetailedInfo)`
+export const Min = styled.span`
   grid-area: min;
 `;
 
-export const Wind = styled(DetailedInfo)`
+export const Wind = styled.span`
   grid-area: wind;
 `;
 
-export const Humidity = styled(DetailedInfo)`
+export const Humidity = styled.span`
   grid-area: humidity;
 `;
 
-export const CloudCover = styled(DetailedInfo)`
+export const CloudCover = styled.span`
   grid-area: cloudCover;
 `;
 
@@ -70,13 +65,13 @@ export const Label = styled.span`
   font-size: 12px;
 `;
 
+export const WeatherDescription = styled(Label)`
+  text-transform: capitalize;
+`;
+
 export const Info = styled.span`
   display: block;
   font-size: 16px;
-`;
-
-export const WeatherDescription = styled(Label)`
-  text-transform: capitalize;
 `;
 
 export const LocationName = styled(Info)`
