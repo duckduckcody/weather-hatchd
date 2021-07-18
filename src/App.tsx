@@ -34,25 +34,31 @@ function App() {
   );
 
   useEffect(() => {
+    let mounted = true;
     let intervalId: number | undefined = undefined;
 
     navigator.geolocation.getCurrentPosition(
       ({ coords }) => {
         getWeatherData(coords.longitude, coords.latitude).then((res) => {
-          setWeatherData(res);
-          intervalId = window.setInterval(
-            () =>
-              getWeatherData(coords.longitude, coords.latitude).then((res) =>
-                setWeatherData(res)
-              ),
-            600000
-          );
+          if (mounted) {
+            setWeatherData(res);
+            intervalId = window.setInterval(
+              () =>
+                getWeatherData(coords.longitude, coords.latitude).then((res) =>
+                  setWeatherData(res)
+                ),
+              600000
+            );
+          }
         });
       },
       (e) => console.log('error getting location', e)
     );
 
-    return () => window.clearInterval(intervalId);
+    return () => {
+      mounted = false;
+      window.clearInterval(intervalId);
+    };
   }, [getWeatherData]);
 
   return (
